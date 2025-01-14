@@ -28,7 +28,7 @@
 
         .stream-container {
             width: 100%;
-            height: 800px;
+            height: 100vh;
             background-color: #111;
             margin-bottom: 40px;
             display: flex;
@@ -37,6 +37,7 @@
             border: 4px solid #ff00ff;
             border-radius: 10px;
             overflow: hidden;
+            min-height: 900px;
         }
         
         .stream-embed {
@@ -152,17 +153,12 @@
 
     <div class="container">
         <div class="stream-container">
-            <!-- Add Twitch embed -->
-            <div id="twitch-embed"></div>
-            <script src="https://embed.twitch.tv/embed/v1.js"></script>
-            <script type="text/javascript">
-                new Twitch.Embed("twitch-embed", {
-                    width: "100%",
-                    height: "100%",
-                    channel: "breloomfun",
-                    parent: ["hamsterrave.fun"]
-                });
-            </script>
+            <iframe
+                src="https://player.twitch.tv/?channel=breloomfun&parent=hamsterrave.fun&muted=true"
+                height="100%"
+                width="100%"
+                allowfullscreen>
+            </iframe>
         </div>
 
         <div class="party-section">
