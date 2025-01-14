@@ -1,221 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAMSTER RAVE 🐹</title>
+    <title>HAMSTER RAVE</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Press Start 2P', cursive;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        body { 
+            margin: 0; 
             padding: 20px;
+            background: black;
         }
-
-        .stream-container {
-            width: 100%;
-            height: 100vh;
-            background-color: #111;
-            margin-bottom: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 4px solid #ff00ff;
-            border-radius: 10px;
-            overflow: hidden;
-            min-height: 900px;
+        .embed-container { 
+            width: 1280px;
+            height: 720px;
+            margin: 0 auto;
         }
-        
-        .stream-embed {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .party-section {
-            text-align: center;
-            margin-bottom: 40px;
-            animation: rainbow 5s infinite;
-        }
-
-        .hamster-logo {
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px #ff00ff;
-        }
-
-        .token-info {
-            font-size: 24px;
-            margin-bottom: 40px;
-            color: #00ff00;
-        }
-
-        .dancing-hamsters {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 40px;
-        }
-
-        .hamster {
-            font-size: 64px;
-            animation: dance 0.5s infinite alternate;
-        }
-
-        @keyframes dance {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-20px) rotate(10deg); }
-        }
-
-        @keyframes rainbow {
-            0% { color: #ff0000; }
-            20% { color: #ff00ff; }
-            40% { color: #00ff00; }
-            60% { color: #ffff00; }
-            80% { color: #00ffff; }
-            100% { color: #ff0000; }
-        }
-
-        .social-buttons {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            display: flex;
-            gap: 10px;
-        }
-
-        .social-button {
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #fff;
-            border-radius: 8px;
-            padding: 8px 16px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .social-button:hover {
-            background: #fff;
-            color: #000;
-            transform: translateY(-2px);
-        }
-
-        .contract-address {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff;
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .party-lights {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .light {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            animation: flash 1s infinite;
-        }
-
     </style>
 </head>
 <body>
-    <div class="social-buttons">
-        <a href="https://twitter.com" class="social-button">Twitter 🐦</a>
-        <a href="https://pump.fun" class="social-button">PUMP.FUN 🚀</a>
+    <div class="embed-container">
+        <iframe 
+            src="https://player.twitch.tv/?channel=breloomfun&parent=hamsterrave.fun"
+            width="100%"
+            height="100%"
+            frameborder="0">
+        </iframe>
     </div>
-
-    <div class="container">
-        <div class="stream-container">
-            <iframe
-                src="https://player.twitch.tv/?channel=breloomfun&parent=hamsterrave.fun&muted=true"
-                height="100%"
-                width="100%"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <div class="party-section">
-            <div class="hamster-logo">🐹 HAMSTER RAVE 🐹</div>
-            <div class="token-info">$HAMSTER ON PUMP.FUN 🚀</div>
-            <div class="dancing-hamsters">
-                <div class="hamster">🐹</div>
-                <div class="hamster">🐹</div>
-                <div class="hamster">🐹</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="party-lights" id="partyLights">    </div>
-
-    <div class="contract-address">CA: TBA</div>
-
-    <script>
-        // Create party lights
-        function createLights() {
-            const container = document.getElementById('partyLights');
-            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ff00ff', '#ffff00'];
-            
-            for (let i = 0; i < 50; i++) {
-                const light = document.createElement('div');
-                light.className = 'light';
-                light.style.left = Math.random() * 100 + '%';
-                light.style.top = Math.random() * 100 + '%';
-                light.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                light.style.animation = `flash ${Math.random() * 2 + 0.5}s infinite`;
-                container.appendChild(light);
-            }
-        }
-
-        // Animation for party lights
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes flash {
-                0%, 100% { opacity: 0; }
-                50% { opacity: 0.8; }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Initialize party lights
-        createLights();
-
-        // Add some randomized movement to the hamsters
-        const hamsters = document.querySelectorAll('.hamster');
-        hamsters.forEach(hamster => {
-            setInterval(() => {
-                hamster.style.transform = `
-                    translateY(${-Math.random() * 20}px) 
-                    rotate(${Math.random() * 20 - 10}deg)
-                `;
-            }, 500);
-        });
-    </script>
 </body>
 </html>
